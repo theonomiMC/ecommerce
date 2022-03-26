@@ -1,0 +1,22 @@
+.cart-icon {
+  position: relative;
+  cursor: pointer;
+  margin-left: 1em;
+  .count {
+    position: absolute;
+    background-color: #1d1f22;
+    border-radius: 60px;
+    width: 20px;
+    height: 20px;
+    bottom: 15px;
+    right: -10px;
+
+    text-align: center;
+    span {
+      font-family: Roboto;
+      font-weight: 700;
+      font-size: 14px;
+      color: white;
+    }
+  }
+}

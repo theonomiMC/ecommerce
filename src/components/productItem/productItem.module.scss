@@ -1,0 +1,91 @@
+@import "../../global.scss";
+
+.product-item {
+  position: relative;
+  width: 100%;
+  max-width: 386px;
+  margin: 1em;
+  transition: 0.3s;
+
+  .out {
+    width: 100%;
+    &:before {
+      content: "";
+      background: rgba(255, 255, 255, 0.5);
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    &:after {
+      content: "OUT OF STOCK";
+      position: absolute;
+      width: 100%;
+      height: 330px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-weight: 400;
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      color: #8d8f9a;
+      justify-content: center;
+    }
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .img-wrapper {
+    padding: 1em;
+
+    img {
+      width: 356px;
+      height: 338px;
+      max-height: 330px;
+      object-fit: cover;
+    }
+  }
+
+  .content {
+    margin: 0.5em 0 1.3em 0.8em;
+    h2 {
+      font-weight: 300;
+      font-size: 1.125rem;
+      margin: 0;
+    }
+    p {
+      font-weight: 500;
+      font-size: 1.125rem;
+      margin: 0.45em 0;
+    }
+  }
+
+  .cart-btn {
+    position: absolute;
+    height: 52px;
+    width: 52px;
+    right: 31px;
+    bottom: 75px;
+    border: none;
+    border-radius: 50%;
+    background: $primary;
+    cursor: pointer;
+    box-shadow: 0px 4px 11px 0px rgba(29, 31, 34, 0.1);
+    display: none;
+    &:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+  }
+  &:hover {
+    box-shadow: 0px 4px 35px 0px rgba(168, 172, 176, 0.19);
+    .cart-btn {
+      display: block;
+    }
+  }
+}

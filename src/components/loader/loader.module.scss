@@ -1,0 +1,40 @@
+@import '../../global.scss';
+.loader{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .line{
+        width:3px;
+        height: 57px;
+        background-color: $primary;
+        transform-origin: top top;
+        animation: loader 1.3s linear infinite;
+        margin:.2em;
+        padding: .5em;
+    }
+    .line1{
+        animation-delay: .1s;
+    }
+    .line2{
+        animation-delay: .4s;
+    }
+    .line3{
+        animation-delay: .7s;
+    }
+    @keyframes loader {
+        0%{
+            transform: scaleY(0.1);
+            border-radius: 5px;
+        }
+        50%{
+            transform: scaleY(1);
+            background: $primary;
+        }
+        100%{
+            transform: scaleY(0.1);
+            background: transparent;
+            border-radius: 5px;
+        }
+    }
+}
