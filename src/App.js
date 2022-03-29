@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import Header from './components/header/Header';
-// import Category from './pages/Category/Category';
-// import ProductPage from './pages/productPage/ProductPage'
 import CartPage from './pages/cart-page/CartPage';
 import CheckOut from './pages/checkout/CheckOut';
 import Loader from './components/loader/Loader';
@@ -22,11 +20,11 @@ class App extends Component {
   render() {
     const { data } = this.props
     const { laoding, error } = data
-    const allProducts = data.categories && data.categories[0].products
+    const allProducts = data?.categories && data?.categories[0].products
 
     return (
       <main>
-        <Header categories={data?.categories} />
+        <Header />
         <React.Suspense fallback={<Loader />}>
           <Switch>
             <Route exact path='/'>
@@ -35,6 +33,7 @@ class App extends Component {
                 laoding={data.loading}
               />
             </Route>
+
             {data?.categories && data.categories.map(cat =>
               <Route exact path={`/${cat.name}`} key={cat.name}>
                 <Category
@@ -60,7 +59,6 @@ class App extends Component {
             </Route>
           </Switch>
         </React.Suspense>
-
         {error && <Error />}
         {laoding && <Loader />}
       </main >
@@ -71,7 +69,7 @@ class App extends Component {
 export default graphql(
   gql`
     query {
-      categories {
+      categories{
         name
         products {
           id

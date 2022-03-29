@@ -1,5 +1,6 @@
 @import "../../global.scss";
 .cartItem {
+  margin-bottom: 1em;
   img {
     width: 105px;
     height: 137px;
@@ -38,12 +39,16 @@
       flex-wrap: wrap;
       align-items: center;
 
+      .btns-wrapper{
+        margin-top: 1.1em;
+      }
       button {
         margin: 0.2em;
         &.inactive {
           border: 1px solid rgba(166, 166, 166, 1);
           color: rgba(166, 166, 166, 1);
         }
+        
       }
     }
   }

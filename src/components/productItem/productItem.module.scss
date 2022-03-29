@@ -42,11 +42,11 @@
 
   .img-wrapper {
     padding: 1em;
-
+    max-height: 330px;
+    overflow: hidden;
     img {
       width: 356px;
-      height: 338px;
-      max-height: 330px;
+      height: auto;
       object-fit: cover;
     }
   }

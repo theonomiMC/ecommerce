@@ -34,9 +34,7 @@ class CurrencyForm extends Component {
                         {cur.symbol}{' '}{cur.label}
                     </button>
 
-                ))
-                }
-
+                ))}
             </div>
         )
     }

@@ -15,9 +15,7 @@ class CartBadge extends Component {
                 {totalItems > 0 && <div className={classes.count}>
                     <span>{totalItems}</span>
                 </div>}
-
             </div>
-
         )
     }
 }

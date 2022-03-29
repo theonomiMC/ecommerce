@@ -31,20 +31,16 @@ class CartModal extends Component {
         const currency = this.props.currency
         const counter = this.props.counter
         const sum = this.props.sum.toFixed(2)
-
         return (
             <main className={classes.modalBox}>
                 <div className={classes.modal} ref={this.ref}>
                     {counter > 0 ? (
                         <>
                             <h3> My Bag, {counter} items</h3>
-                            {cartItems.length > 0 && cartItems.map(item => <CartItem item={item} key={item.id} />)}
+                            {cartItems.length > 0 && cartItems.map(item => <CartItem item={item} key={item.uid} />)}
                             <div className={classes.total} >
-                                <p >Total:</p>
-                                <p style={{
-                                    fontFamily: 'Raleway',
-                                    fontWeight: 700
-                                }}>{currency}{sum}</p>
+                                <p className={classes.amount}>Total:</p>
+                                <p>{currency}{sum}</p>
                             </div>
                         </>) : <h3>bag is empty</h3>
 
@@ -54,12 +50,7 @@ class CartModal extends Component {
                             <button disabled={counter === 0} onClick={() => this.props.isHidden()}>view bag</button>
                         </Link>
                         <Link to='/checkout'>
-                            <button
-                                style={{
-                                    backgroundColor: '#5ECE7B',
-                                    color: 'white',
-                                    border: 'none'
-                                }}
+                            <button className={classes.checkout}
                                 onClick={() => this.props.isHidden()}
                                 disabled={counter === 0}>
                                 check out
@@ -68,7 +59,6 @@ class CartModal extends Component {
                     </div>
                 </div>
             </main>
-
         )
     }
 }

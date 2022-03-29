@@ -14,7 +14,6 @@ class ProductDetail extends Component {
         const currency = this.props.currency
         // const price = filterPrice(item, currency)
         const price = item?.prices.filter(el => el?.currency?.symbol === currency)[0]['amount']
-
         return (
             <article className={classes.details}>
                 <div className={classes.gallery}>
@@ -33,12 +32,12 @@ class ProductDetail extends Component {
                 <div className={classes.content}>
                     <h2>{item?.name}</h2>
                     <h3>{item?.brand}</h3>
-                    <p className={classes['attr-name']} style={{ marginBottom: 12 }}>price</p>
+                    <p className={classes['attr-name']}>price</p>
                     <p className={classes.price}>{currency}{price}</p>
                     <Attributes item={item} />
                     <div className={classes.desc}>{parse(item?.description)}</div>
                 </div>
-            </article >
+            </article>
         )
     }
 }

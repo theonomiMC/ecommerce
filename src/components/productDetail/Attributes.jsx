@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { addProduct, clearProduct } from '../../redux/cart/cart.actions';
+import { addProduct } from '../../redux/cart/cart.actions';
+import { uniqueID } from '../../utils';
 import classes from './details.module.scss'
 
 class Attributes extends Component {
@@ -9,7 +10,6 @@ class Attributes extends Component {
         this.state = {}
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
-        this.handleRemove = this.handleRemove.bind(this)
     }
     handleChange(name, value) {
         this.setState({ ...this.state, [name]: value })
@@ -17,19 +17,17 @@ class Attributes extends Component {
     handleSubmit() {
         let allSelected = Object.keys(this.state).length
         let allAtributes = this.props.item.attributes.length
+
         if (allSelected === allAtributes) {
-            this.props.addProduct({ ...this.props.item, selected: { ...this.state } })
+            let uid = `${this.props.item.id}-${uniqueID(this.state)}`
+            this.props.addProduct({ ...this.props.item, uid, selected: { ...this.state } })
         } else {
             alert('Please select all attributes.  ')
         }
+    }
 
-    }
-    handleRemove() {
-        this.props.clearProduct(this.props.item)
-    }
     render() {
         const item = this.props.item
-        const addedProduct = this.props.cartItems.some(el => el.name === item.name)
         return (
             <div>
                 {item.attributes.length > 0 && item?.attributes.map(attr => (
@@ -55,19 +53,13 @@ class Attributes extends Component {
                     </React.Fragment>
                 ))}
 
-                {/* according to product status, add/remove functionality changes */}
-                {
-                    addedProduct ? <button className={classes['cart-btn']}
-                        type='button'
-                        onClick={this.handleRemove}
-                    > remove from cart</button>
-                        : <button className={classes['cart-btn']}
-                            type='button'
-                            onClick={this.handleSubmit}
-                            disabled={!this.props.item.inStock}>
-                            {item.inStock ? 'add to cart' : 'Out of stock'}
-                        </button>
-                }
+                <button className={classes['cart-btn']}
+                    type='button'
+                    onClick={this.handleSubmit}
+                    disabled={!this.props.item.inStock}>
+                    {item.inStock ? 'add to cart' : 'Out of stock'}
+                </button>
+
             </div>
         )
     }
@@ -76,7 +68,6 @@ const mapStateToProps = ({ cart: { cartItems } }) => ({
     cartItems
 })
 const mapDispatchToProps = dispatch => ({
-    addProduct: item => dispatch(addProduct(item)),
-    clearProduct: product => dispatch(clearProduct(product))
+    addProduct: item => dispatch(addProduct(item))
 })
 export default connect(mapStateToProps, mapDispatchToProps)(Attributes)

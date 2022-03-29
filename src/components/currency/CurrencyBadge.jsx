@@ -20,7 +20,6 @@ class CurrencyBadge extends Component {
                 </div>
                 {hidden_curr && <CurrencyForm data={currencies} />}
             </div>
-
         )
     }
 }

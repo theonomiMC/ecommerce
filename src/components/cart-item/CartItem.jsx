@@ -5,39 +5,34 @@ import { addProduct, removeProduct } from '../../redux/cart/cart.actions'
 import classes from './cartItem.module.scss'
 
 class CartItem extends Component {
-
     render() {
         const currency = this.props.currency
         const { name, brand, gallery, quantity, attributes, selected } = this.props.item
         // const price = filterPrice(this.props.item, currency) // Not sure if this way is accceptable for this challange
         const price = this.props.item.prices.filter(el => el.currency.symbol === currency)[0]['amount']
-        console.log('attributes', this.props.item)
 
         return (
-            <div className={classes.cartItem} style={{ marginBottom: '1em' }}>
+            <div className={classes.cartItem}>
                 <div className={classes.info}>
                     <p>{name}</p>
                     <p>{brand}</p>
                     <span>{currency}{price}</span>
                     <div className={classes.attributes}>
                         {attributes.map(attr => attr.items.length > 0 && (
-                            <div key={attr.id} style={{ display: 'block', marginTop: '1.1em' }}>
-                                {attr?.items.map(singleItem => (
+                            <div key={attr.id} className={classes['btns-wrapper']}>
+                                {attr?.items.map(singleItem =>
                                     <button
-                                        onClick={e => console.log(e.target.value)}
                                         value={singleItem.id}
                                         key={singleItem.id}
                                         className={
-                                            Object.values(selected).includes(singleItem.id) ?
-                                                `${classes.active}` : `${classes.inactive}`
+                                            selected[attr.id] === singleItem.id || selected[attr.id] === singleItem.value ?
+                                                undefined : `${classes.inactive}`
                                         }
                                         style={{ backgroundColor: `${singleItem.value}` }}>
-                                        {attr.type !== 'swatch' ? singleItem.value : ''}</button>
-
-                                ))}
-
+                                        {attr.type !== 'swatch' ? singleItem.value : ''}
+                                    </button>
+                                )}
                             </div>)
-
                         )}
                     </div>
                 </div>
@@ -55,7 +50,7 @@ class CartItem extends Component {
                     > - </button>
                 </div>
                 <img src={gallery[0]} alt={name} />
-            </div >
+            </div>
 
         )
     }

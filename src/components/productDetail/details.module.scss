@@ -2,8 +2,6 @@
 
 .details {
   margin-top: 5em;
-  margin-bottom: 5em;
-  display: flex;
   display: flex;
 
   .gallery {
@@ -54,6 +52,7 @@
     font-weight: 700;
     font-size: 1.125rem;
     text-transform: uppercase;
+    margin-bottom: 12px;
   }
   .attribute-btns {
     list-style-type: none;

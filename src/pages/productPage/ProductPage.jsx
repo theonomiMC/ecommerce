@@ -8,6 +8,7 @@ class ProductPage extends Component {
   render() {
     const { data } = this.props;
     const { loading } = data;
+
     return (
       <>
         {data.product && <ProductDetail item={data.product} />}

@@ -5,11 +5,12 @@ import { connect } from 'react-redux';
 import classes from './header.module.scss';
 import CartBadge from '../cart-badge/CartBadge';
 import CurrencyBadge from '../currency/CurrencyBadge';
+import { graphql } from '@apollo/client/react/hoc';
+import { gql } from "@apollo/client";
 
 class Header extends Component {
-
     render() {
-        const categories = this.props.categories;
+        const categories = this.props.data.categories;
         const hidden = this.props.hidden
         return (
             <header className={classes.header}>
@@ -39,14 +40,20 @@ class Header extends Component {
                     <CartBadge />
                 </div>
                 {hidden && <CartModal />}
-            </header >
+            </header>
         )
     }
 }
 const mapStateToProps = ({ cart: { hidden } }) => ({
     hidden,
 })
-// const mapDispatchToProps = dispatch => ({
-//     isHidden: () => dispatch(isHidden())
-// });
-export default connect(mapStateToProps)(Header);
+
+export default graphql(
+    gql`
+    query{
+        categories{
+            name
+        }
+    }
+    `
+)(connect(mapStateToProps)(Header));

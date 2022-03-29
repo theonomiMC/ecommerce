@@ -1,0 +1,106 @@
+@import "../../global.scss";
+
+.cartItem {
+  display: flex;
+  border-top: 1px solid #e5e5e5;
+  margin-bottom: 1em;
+  padding: 1em 0;
+
+  button {
+    min-width: 45px;
+    height: 45px;
+    border: 1px solid $black;
+    background-color: white;
+  }
+  .info {
+    display: flex;
+    flex-direction: column;
+    padding-right: 0.7em;
+
+    p {
+      margin: 0 0 0.3em 0;
+      font-weight: 600;
+      font-size: 30px;
+      &:last-of-type {
+        margin-bottom: 0.85em;
+        font-weight: 400;
+      }
+    }
+    span {
+      margin-top: auto;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 24px;
+    }
+    .attributes {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      flex-direction: column;
+
+      .btns-container {
+        margin-top: 1.1em;
+
+        button {
+          margin: 0.2em;
+          width: 63px;
+          height: 45px;
+          border: 1px solid $black;
+          font-family: "Source Sans Pro";
+          font-weight: 400;
+          font-size: 16px;
+
+          &.active {
+            background: $black;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+  .actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 0.6em;
+
+    button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 18px;
+    }
+    span {
+      font-weight: 500;
+      font-size: 24px;
+    }
+  }
+
+  .img-container {
+    position: relative;
+    width: 141px;
+    max-height: 185px;
+    overflow: hidden;
+    .arrow {
+      position: absolute;
+      padding: 10px;
+      cursor: pointer;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: all 0.5s ease-in-out;
+      &:hover {
+        background-color: $black;
+      }
+    }
+    .next {
+      right: 0;
+    }
+    .item-img {
+      width: 100%;
+      height: auto;
+      // object-fit: contain;
+    }
+  }
+}
