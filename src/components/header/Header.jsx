@@ -34,11 +34,13 @@ class Header extends Component {
                     </ul>
                     {/* Logo */}
                     <img src="/assets/logo.svg" alt='logo' />
-                    <CurrencyBadge />
+
+                    <div className={classes.right}>
+                        <CurrencyBadge />
+                        <CartBadge />
+                    </div>
                 </nav>
-                <div className={classes.right}>
-                    <CartBadge />
-                </div>
+
                 {hidden && <CartModal />}
             </header>
         )

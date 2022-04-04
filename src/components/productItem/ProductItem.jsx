@@ -14,6 +14,7 @@ class ProductItem extends Component {
         // highlight selected attributes in product attributes
         const selected = attrName.map((n, i) => ({ [n]: attrValue[i] }), {}).reduce((obj, item) => ({ ...obj, ...item }), {})
         const uid = product.id + '-' + product.attributes.map(el => el.items[0]['id']).join('-')
+
         return (
             <div className={classes['product-item']}>
                 <Link to={`/${product.category}/${product.id}`}>
@@ -39,7 +40,6 @@ class ProductItem extends Component {
                     <img src='/assets/cart.svg' alt='add to cart' />
                 </button>
                 }
-
             </div>
         )
     }
@@ -51,4 +51,4 @@ const mapStateToProps = ({ cart: { currency, cartItems } }) => ({
     currency,
     cartItems
 })
-export default connect(mapStateToProps, mapDispatchToProps)(ProductItem)
+export default connect(mapStateToProps, mapDispatchToProps)(ProductItem);

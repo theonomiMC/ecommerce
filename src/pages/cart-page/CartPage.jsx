@@ -5,8 +5,8 @@ import classes from './cart-page.module.scss'
 import { filterPrice } from '../../utils';
 import CartPageItem from '../../components/cart-page-item/CartPageItem';
 
-class CartPage extends Component {
 
+class CartPage extends Component {
   render() {
     const cartItems = this.props.cartItems
     const sum = this.props.sum.toFixed(2)

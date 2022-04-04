@@ -32,7 +32,7 @@ class CartModal extends Component {
         const counter = this.props.counter
         const sum = this.props.sum.toFixed(2)
         return (
-            <main className={classes.modalBox}>
+            <div className={classes.modalBox}>
                 <div className={classes.modal} ref={this.ref}>
                     {counter > 0 ? (
                         <>
@@ -58,7 +58,7 @@ class CartModal extends Component {
                         </Link>
                     </div>
                 </div>
-            </main>
+            </div>
         )
     }
 }

@@ -1,14 +1,35 @@
 import React, { Component } from 'react'
-import { graphql } from '@apollo/client/react/hoc';
-import { gql } from '@apollo/client';
 import CurrencyForm from './CurrencyForm';
 import { connect } from 'react-redux'
 import { isHiddenCurr } from '../../redux/cart/cart.actions';
 import classes from './currency.module.scss';
 
+
+const currencies = [
+    {
+        "symbol": "$",
+        "label": "USD"
+    },
+    {
+        "symbol": "£",
+        "label": "GBP"
+    },
+    {
+        "symbol": "A$",
+        "label": "AUD"
+    },
+    {
+        "symbol": "¥",
+        "label": "JPY"
+    },
+    {
+        "symbol": "₽",
+        "label": "RUB"
+    }
+]
+
 class CurrencyBadge extends Component {
     render() {
-        const currencies = this.props.data.currencies
         const isHiddenCurr = this.props.isHiddenCurr
         const hidden_curr = this.props.hidden_curr
 
@@ -30,13 +51,4 @@ const mapStateToProps = ({ cart: { currency, hidden_curr } }) => ({
 const mapDispatchToProps = dispatch => ({
     isHiddenCurr: () => dispatch(isHiddenCurr())
 });
-export default graphql(
-    gql`
-    query{
-        currencies{
-            symbol
-            label
-          }
-    }
-    `
-)(connect(mapStateToProps, mapDispatchToProps)(CurrencyBadge))
+export default connect(mapStateToProps, mapDispatchToProps)(CurrencyBadge)

@@ -8,10 +8,11 @@ class Products extends Component {
   }
   render() {
     const products = this.props.products
+
     return (
       <div className={classes.products}>
         {
-          products.map((product) => {
+          products && products.map((product) => {
             // create unique id
             let id = product.id + '-' + product.attributes.map(el => el.items[0]['value']).join('-')
             return (
