@@ -1,6 +1,9 @@
 # Ecommerce Application
 
 This is ecommerce app created using react class components and graphql.
+[View Demo](https://user-images.githubusercontent.com/64376039/226883916-49b95606-9a0c-41cd-9b67-b80f8d886243.webm)
+
+
 
 ## Functionality
 
